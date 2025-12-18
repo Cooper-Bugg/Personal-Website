@@ -1,211 +1,193 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  /* River-themed gradient background */
-  /* background: linear-gradient(to bottom, #aee2ff 0%, #4f8cff 100%); */
-  /* To use a mountain/river image background instead, uncomment below: */
-  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') no-repeat center center fixed;
-  background-size: cover;
-  color: #222;
+    background-color: #000;
+    color: #fff;
+    font-family: "Courier New", Courier, monospace;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-
-/* ---------- Nature palette + base tokens ---------- */
-:root{
-  --leaf:#386a3a;          /* primary accent */
-  --moss:#6e8f6a;          /* secondary accent */
-  --sage:#e5efe8;          /* card surface */
-  --sand:#f3efe7;          /* page background */
-  --bark:#2b2a28;          /* body text */
-  --ink:#1e2320;           /* headings */
-  --muted:#8a857d;         /* subtle lines */
-  --radius:16px;
-  --shadow: 0 10px 28px rgba(30,35,32,.10), 0 2px 8px rgba(30,35,32,.06);
+/* CRT Scanlines */
+.scanlines {
+    content: " ";
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    bottom: 0; 
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+    background-size: 100% 4px;
+    z-index: 1000;
+    pointer-events: none;
 }
 
-/* ---------- Page background + typography ---------- */
-html,body{height:100%}
-body{
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue";
-  margin:0;
-  color:var(--bark);
-
-  /* Keep your scenic photo but soften with layered tints for readability */
-  background:
-    radial-gradient(1200px 800px at 10% -10%, #e9f3ee 0%, transparent 60%),
-    radial-gradient(1200px 800px at 110% 20%, #f0eee7 0%, transparent 55%),
-    var(--sand);
-  background-attachment: fixed;
-}
-body::before{
-  /* Your Unsplash landscape, dimmed for contrast */
-  content:"";
-  position:fixed; inset:0;
-  background:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1600&q=80')
-             center/cover no-repeat;
-  filter: saturate(0.9) brightness(0.85);
-  z-index:-2;
-}
-body::after{
-  /* subtle film to keep text legible */
-  content:"";
-  position:fixed; inset:0;
-  background:linear-gradient(to bottom, rgba(243,239,231,0.5), rgba(243,239,231,0.2) 40%, rgba(243,239,231,0.6));
-  z-index:-1;
+#mountain-wrapper {
+    width: 100%;
+    height: 40vh;
+    background-color: #050505;
+    border-bottom: 2px solid #333;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
 }
 
-h1,h2,h3{color:var(--ink); letter-spacing:-0.01em; margin:0.2em 0 0.5em}
-
-/* ---------- Navigation: glassy, less square ---------- */
-nav{
-  position:fixed;
-  bottom:0; left:0; right:0;
-  z-index:10;
-  backdrop-filter: blur(10px);
-  background: color-mix(in srgb, var(--sage) 75%, transparent);
-  border-top:1px solid color-mix(in srgb, var(--sage) 60%, #000 8%);
-  border-bottom:none;
-}
-nav ul{
-  list-style:none; display:flex; justify-content:center; gap:2rem;
-  margin:0; padding:12px 24px;
-}
-nav a{
-  color:var(--ink); font-weight:600; text-decoration:none;
-  padding:8px 12px; border-radius:999px;
-  transition: background .2s ease, transform .06s ease;
-}
-nav a:hover{ background:rgba(56,106,58,0.12); transform:translateY(-1px) }
-
-/* ---------- Header: organic hero without hard blue ---------- */
-header{
-  text-align:center;
-  padding:3.5rem 1rem 2.75rem;
-  color:var(--ink);
-}
-header h1{ font-size:2rem; }
-header p{ max-width:720px; margin:0.5rem auto 0; line-height:1.6 }
-
-/* ---------- Sections: soft cards on sage surfaces ---------- */
-section{
-  max-width: 820px;
-  margin: 1.5rem auto;
-  padding: 1.25rem 1rem;
-  background: linear-gradient(180deg, rgba(229,239,232,0.96), rgba(229,239,232,0.92));
-  border: 1px solid color-mix(in srgb, var(--sage) 85%, #000 8%);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+.star {
+    position: absolute;
+    color: #fff;
+    font-size: 2px;
+    opacity: 0.8;
+    animation: twinkle 3s infinite;
 }
 
-/* ---------- Skills list: icon tone shift ---------- */
-.skills-list{
-  display:flex; flex-wrap:wrap; gap:1rem 1.25rem; list-style:none; padding:0; margin:0.75rem 0 0;
-}
-.skills-list li{ display:flex; align-items:center; font-size:1.05rem; }
-.skills-list i{ margin-right:0.5rem; font-size:1.35rem; color:var(--leaf); }
-
-/* ---------- Projects: card aesthetic without “square” edges ---------- */
-.projects{ display:flex; flex-direction:column; gap:0.9rem; }
-.project{
-  padding:1rem;
-  border:1px solid color-mix(in srgb, var(--sage) 75%, #000 10%);
-  border-radius: calc(var(--radius) - 4px);
-  background: linear-gradient(180deg, #f0f5f1, #e9f1ec);
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
 }
 
-/* ---------- Links: leaf accent ---------- */
-a{ color:var(--leaf); text-decoration:none }
-a:hover{ text-decoration:underline }
-
-/* ---------- Utility media queries ---------- */
-@media (min-width: 900px){
-  header h1{ font-size:2.4rem }
-  section{ padding: 1.5rem 1.25rem }
+#moon {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #f0f0f0;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5),
+                0 0 60px rgba(255, 255, 255, 0.3);
+    z-index: 10;
 }
 
-/* ---------- Optional dark mode (respects OS setting) ---------- */
-@media (prefers-color-scheme: dark){
-  :root{
-    --sage:#1f2a23;
-    --sand:#0f130f;
-    --bark:#e6e6e1;
-    --ink:#f2f3f1;
-    --muted:#3c413c;
-  }
-  body::after{ background:linear-gradient(to bottom, rgba(15,19,15,0.5), rgba(15,19,15,0.2) 40%, rgba(15,19,15,0.6)) }
-  nav{ border-bottom:1px solid #303630 }
-  section{
-    background: linear-gradient(180deg, rgba(31,42,35,0.92), rgba(31,42,35,0.88));
-    border-color:#303630;
-  }
-  .project{ background: linear-gradient(180deg, #263128, #232c26); border-color:#303630 }
-}
-.skills-list {
-  display: flex;
-  gap: 2em;
-  list-style: none;
-  padding: 0;
-  margin: 1em 0;
-}
-.skills-list li {
-  display: flex;
-  align-items: center;
-  font-size: 1.2em;
-}
-.skills-list i {
-  margin-right: 0.5em;
-  font-size: 1.5em;
-  color: #4f8cff;
+#mountain-tiles {
+    margin: 0;
+    margin-bottom: -15px;
+    padding: 0;
+    color: #fff;
+    font-size: 2vh;
+    line-height: 1.0;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre;
+    text-shadow: 0 -2px 5px rgba(255, 255, 255, 0.15);
 }
 
-header {
-  background: transparent;
-  color: var(--ink);
-  padding: 3.5rem 1rem 2.75rem;
-  text-align: center;
-  box-shadow: none;
+.snow { 
+    color: #ffffff; 
+    font-weight: bold; 
 }
 
-section {
-  display: none;
-}
-.active-section {
-  display: block;
-  h1, h2 {
-h1, h2 {
-  }
-  margin-top: 0;
+.trees { 
+    color: #1b4d3e; 
 }
 
-.projects {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
+#game-world {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
 }
 
-.project {
-  padding: 1em;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  background: #f4f8ff;
-  color: #222; /* Ensures text is readable on light background */
+#river-layer {
+    white-space: pre;
+    line-height: 1.1;
+    font-size: 14px;
 }
 
-a {
-  color: #4f8cff;
-  text-decoration: none;
+/* Color classes for ASCII characters */
+.grass { 
+    color: #228b22;
 }
 
-a:hover {
-  text-decoration: underline;
+.water { 
+    color: #00aaff;
 }
 
-.profile-photo img {
-  width: 140px;
-  height: 140px;
-  object-fit: cover; /* Ensures the image keeps aspect ratio and fills the circle */
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-  margin-bottom: 1rem;
+.tree { 
+    color: #004400;
+    font-weight: bold;
+}
+
+#fisherman {
+    position: absolute;
+    top: 45%;
+    left: 32%;
+    color: #fff;
+    z-index: 100;
+    white-space: pre;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4),
+                 0 0 40px rgba(255, 255, 255, 0.2);
+}
+
+/* Catch Box */
+#ui-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: #000;
+    border: 3px solid #fff;
+    padding: 40px;
+    box-shadow: 0 0 40px rgba(255,255,255,0.3);
+    transition: 0.3s;
+    z-index: 1500;
+    width: 70vw;
+    height: 70vh;
+    white-space: pre-wrap;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#ui-overlay.active { 
+    transform: translate(-50%, -50%) scale(1); 
+}
+
+#profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+#catch-data {
+    font-family: inherit;
+    line-height: 1.8;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Navigation Bar */
+.nav-bar {
+    position: fixed;
+    bottom: 20px;
+    display: flex;
+    gap: 15px;
+    z-index: 2000;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+button {
+    background: #000;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+button:hover { 
+    background: #fff;
+    color: #000;
 }
