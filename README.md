@@ -1,4 +1,5 @@
 # Cooper Huntington-Bugg Personal Website
+Live site: https://cooper-bugg.github.io/personal-website/
 
 This is my personal portfolio website, built to showcase my skills, projects, and contact information. The site is designed with a clean layout and a nature-inspired theme.
 
@@ -16,4 +17,4 @@ This is my personal portfolio website, built to showcase my skills, projects, an
 - FontAwesome for icons
 
 ## Contact
-Email: [cohunti@okstate.edu](mailto:cohunti@okstate.edu)
+Email: [cooperehuntington@gmail.com](mailto:cooperehuntington@gmail.com)
