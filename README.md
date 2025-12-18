@@ -1,5 +1,5 @@
 # Cooper Huntington-Bugg Personal Website
-Live site: https://cooper-bugg.github.io/personal-website/
+Live site: https://cooper-bugg.github.io/Personal-Website/
 
 This is my personal portfolio website, built to showcase my skills, projects, and contact information. The site is designed with a clean layout and a nature-inspired theme.
 
