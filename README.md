@@ -1,7 +1,7 @@
 
-# The Humanist Engineer
+# Learning Blog
 
-Live site: https://cooper-bugg.github.io/humanist-engineer/
+Live site: https://cooper-bugg.github.io/learning-blog/
 
 A personal learning blog, project portfolio, and digital garden documenting my transition from a CS undergrad (OSU Tulsa, grad Dec 2026) to an ECE Master's candidate (CU Boulder, starts Jan 2027), and beyond. It serves as a central repository for systems programming, computer architecture, embedded systems, technical reading notes, and Linux customizations.
 
@@ -11,7 +11,7 @@ This repo is intentionally simple — plain HTML/CSS/JS — so the content is ea
 
 | Repo | What it is |
 |------|-----------|
-| **[humanist-engineer](https://github.com/Cooper-Bugg/humanist-engineer)** | This site — HTML, CSS, JS, articles, and data. The learning journal and portfolio. |
+| **[learning-blog](https://github.com/Cooper-Bugg/learning-blog)** | This site — HTML, CSS, JS, articles, and data. The learning journal and portfolio. |
 | **[Start-Learning-Cpp](https://github.com/Cooper-Bugg/Start-Learning-Cpp)** | The project repo — all 43 C++ projects, hand-typed and documented. Use them as references when building your own version in any language. |
 
 ## What's in here
